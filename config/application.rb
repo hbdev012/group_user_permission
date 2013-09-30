@@ -68,8 +68,8 @@ module Accapp
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'localhost:3000',
-    :user_name            => 'hiddenror@gmail.com',
-    :password             => 'hb@hbdev',
+    :user_name            => 'example@gmail.com',
+    :password             => 'example',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
