@@ -1,0 +1,9 @@
+<%if current_user%>
+	<div id="main-navigation">
+		<ul class="wat-cf">
+		  <li class="first <%= (active_main_tab == "users" || active_main_tab == "permissions") ? "active" : ""%>"><%= link_to "Users" , users_path %></li>
+		  <li class="<%= (active_main_tab == "groups") ? "active" : ""%>"><%= link_to "Groups" , groups_path %></li>
+		  <li class="<%= (active_main_tab == "invoices") ? "active" : ""%>"><%= link_to "Invoices" , invoices_path %></li>
+		</ul>
+	</div>
+<%end%>

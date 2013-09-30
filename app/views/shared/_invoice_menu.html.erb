@@ -1,0 +1,14 @@
+<% @user ||= current_user %>
+<div class="secondary-navigation">
+	<ul class="wat-cf">
+		<% if allowed_to?(@user,:read, Invoice) %>
+	  	<li class="first <%= (active_tab == "invoices") ? "active" : ""%>"><a href="/invoices">List</a></li>
+	  <% end %>
+	  <% if allowed_to?(@user,:create, Invoice) %>
+	  	<li class="<%= (active_tab == "new") ? "active" : ""%> "><a href="/invoices/new">Add Invoice</a></li>	  
+	  <% end %>
+	  <% if allowed_to?(@user,:read, Invoice) %>
+	  	<li class="<%= (active_tab == "histories") ? "active" : ""%> "><a href="/invoices/history">Invoice History</a></li>	  
+	  <% end %>
+	 </ul>
+</div>

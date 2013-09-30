@@ -1,0 +1,39 @@
+<div id="box">	
+	<div class="block" id="block-login">
+	  <h2>Sign In</h2>
+	  <div class="content login">	  	  
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html=>{:class=>"form login"}) do |f| %>
+				<div class="group wat-cf">
+			    <div class="left">
+			    	<%= f.label :email ,:class=>"label right"%>      
+			    </div>
+			    <div class="right">      
+			      <%= f.email_field :email, :autofocus => true ,:class=>"text_field",:style=>"width:auto;"%>
+			    </div>
+			  </div>
+			 	<div class="group wat-cf">
+			    <div class="left">
+			    	<%= f.label :password ,:class=>"label right"%>      
+			    </div>
+			    <div class="right">      
+			      <%= f.password_field :password ,:class=>"text_field",:style=>"width:auto;"%>
+			    </div>
+			  </div>
+			  <% if devise_mapping.rememberable? -%>
+				  <div class="group wat-cf">
+				    <div class="right">      
+				      <%= f.check_box :remember_me, :autofocus => true ,:class=>"checkbox"%>
+				    	<%= f.label :remember_me %>      
+				    </div>    
+				  </div>
+			  <% end -%>
+			  <div class="group navform wat-cf">
+			    <div class="right">
+			    	<%= f.submit "Sign in" ,:class=>"button"%>      
+			    </div>
+			  </div>   
+			<% end %>
+	</div>
+</div>
+
+<%#= render "devise/shared/links" %>

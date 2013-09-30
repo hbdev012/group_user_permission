@@ -1,0 +1,33 @@
+
+<%= form_for(@user, :url => @action ,:html=>{:class=>"form"}) do |f| %>
+  <%#= devise_error_messages! if @user%>
+  <%#=error_messages_for @user%>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+
+  <div class="group"><%= f.label :first_name %><br />
+  <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div class="group"><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
+  <div class="group"><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div class="group"> <%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div class="group"><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div class="group"><%= f.label :group %><br />
+    <%= f.select :group_id , options_for_select(['']+@groups.map{|x| [x.name,x.id]},:selected=>f.object.group_id )%>
+  </div>
+  
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%=image_tag("tick.png")%> Save
+    </button> 
+	</div>  
+<% end %>

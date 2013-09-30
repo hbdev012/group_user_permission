@@ -1,0 +1,13 @@
+<%=render :partial => "/shared/invoice_menu" , :locals=>{:active_tab => "add_invoices"}%>
+  <div class="block">
+    <div class="content">
+      <div class="inner">
+        <h2>Add Invoice</h2>
+        <%= form_for(@invoice, :url => invoice_path(@invoice) ,:html=>{:class=>"form"}) do |f| %>
+        	<%=render :partial=> "form" , :locals=>{:f => f}%>
+    	<%end%>
+      </div>
+    </div>
+  </div>
+
+<div style="clear:both"></div>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AccApp</title>  
+  <%= stylesheet_link_tag :application, :media => "all" %>  
+  <%= javascript_include_tag :application%>
+  <%= csrf_meta_tag %>
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $("button#InActive").text('Inactive')
+      setTimeout(function() {
+       $('.flash').fadeOut('slow');
+      }, 3000);
+      $('.updatevals').click(function(){
+        var allVals = [];
+          $('.table :checked').each(function() {
+            if ($(this).val()!="on") {
+              allVals.push($(this).val());
+             // alert(allVals);
+            };
+          });
+
+          if (allVals.length > 0 ) {
+            if ( $(this).attr("id")=="Active" || $(this).attr("id")=="InActive" || $(this).attr("id")=="Sold" || $(this).attr("id")=="UnSold" || $(this).attr("id")=="Outofstock") {
+              method='put'
+              url='<%= "/"+params[:controller]+"/update" %>'
+              confirms = true
+            }
+
+            else{
+              method='delete'
+              url='<%= "/"+params[:controller]+"/destroy" %>'
+              if (confirm('Are you sure you want to delete?')) {
+                confirms = true
+              } else{
+                confirms = false
+              };
+            };
+
+            // if (allVals.length > 0 ){ if ( $(this).attr("id")=="Hot_status" || $(this).attr("id")=="new_arrival" ||  $(this).attr("id")=="Sold" || $(this).attr("id")=="Dead" || $(this).attr("id")=="Lead Elapsed" || $(this).attr("id")=="Unassigned"){
+            //     if (confirm('Are you sure you want to change the status ?')) {
+            //       url='<%= "/"+params[:controller]+"/update" %>'
+            //       confirms = true
+            //   } else{
+            //     confirms = false
+            //   };
+            //   };
+            //  };
+             
+            if (confirms) {
+              $.ajax({
+                  url : url,
+                  dataType: 'script',
+                  method : method,
+                  data : {
+                    values : allVals,
+                    status : $(this).text()
+                  }
+              })
+            };
+          }
+          else{
+            if ( $(this).attr("id")=="Active" ){
+              alert("Please select any one record To Activate")
+            }
+            else if ( $(this).attr("id")=="HOT" || $(this).attr("id")=="new" ){
+
+            }
+            else if($(this).attr("id")=="InActive" ){
+              alert("Please select any one record To InActive")
+            }
+            else if ($(this).attr("id")=="Sold" ){
+              alert("Please select any one record To Sold")
+            }else if ($(this).attr("id")=="UnSold" ){
+              alert("Please select any one record To UnSold")
+            }else if ($(this).attr("id")=="Outofstock" ){
+              alert("Please select any one record To Out Of stock")
+            }
+            else{
+              alert("Please select any one record ")
+            }
+          };
+      });
+  });
+</script>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">AccApp</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">          
+          	<% if user_signed_in? %>
+							<li style="color:white;">
+								Welcome <%= current_user.email %>
+							</li>
+							<li><%= link_to "Log Out" , destroy_user_session_path %></li>
+						<% else %>
+							<li><%= link_to "LogIn" , new_user_session_path ,:class=>"logout"%></li>
+						<% end %>          
+        </ul>
+      </div>
+      <%=render :partial => "/shared/main_menu" ,:locals=> {:active_main_tab=>controller.controller_name}%>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>      
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Acc App.</p>
+          </div>      
+        </div>      
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>

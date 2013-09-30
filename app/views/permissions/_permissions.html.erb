@@ -1,0 +1,104 @@
+<% permissions = @permissions || {} %>
+<div style="clear:both"></div>
+<fieldset class="permission-block" style="padding-left:10px">
+    <legend><h4>Manage All</h4></legend>                       
+    <div class="float-left" style="width:10%">
+        <%= hidden_field_tag 'permissions[0][manage][]', nil %>
+        <h4><%= check_box_tag 'permissions[0][manage][]', 'all', check_permission(permissions,0,'manage','','all') %>All</h4>                  
+    </div>                   
+  </div>
+</fieldset>
+
+<fieldset class="permission-block" style="padding-left:10px">
+	<legend><h4>Read Permissions</h4></legend>
+	<div>
+		<div class="float-left" style="width:10%">
+			<%= hidden_field_tag 'permissions[1][read][]', 'User_0'%>
+    	<h4><%= check_box_tag 'permissions[1][read][]', 'User_1', check_permission(permissions,1,'read','User','') %>User</h4>			        
+    </div>				    
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][read][]', 'Invoice_0'%>
+    	<h4><%= check_box_tag 'permissions[1][read][]', 'Invoice_1', check_permission(permissions,1,'read','Invoice','') %>Invoice</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][read][]', 'Currency_0'%>
+    	<h4><%= check_box_tag 'permissions[1][read][]', 'Currency_1', check_permission(permissions,1,'read','Currency','') %>Currency</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][read][]', 'Group_0'%>
+    	<h4><%= check_box_tag 'permissions[1][read][]', 'Group_1', check_permission(permissions,1,'read','Group','') %>Group</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[0][read][]', nil %>
+    	<h4><%= check_box_tag 'permissions[0][read][]', 'welcome_report', check_permission(permissions,0,'read','','welcome_report') %>Welcome Report</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[0][read][]', nil %>
+    	<h4><%= check_box_tag 'permissions[0][read][]', 'welcome_mis_report', check_permission(permissions,0,'read','','welcome_mis_report') %>Welcome MIS Report</h4>			        
+    </div>				     
+  </div>
+</fieldset>
+<fieldset class="permission-block" style="padding-left:10px">
+	<legend><h4>Create Permissions</h4></legend>
+	<div>	
+		<div class="float-left" style="width:10%">
+			<%= hidden_field_tag 'permissions[1][create][]', 'User_0'%>
+    	<h4><%= check_box_tag 'permissions[1][create][]', 'User_1', check_permission(permissions,1,'create','User','') %>User</h4>			        
+    </div>					    
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][create][]', 'Invoice_0'%>
+    	<h4><%= check_box_tag 'permissions[1][create][]', 'Invoice_1', check_permission(permissions,1,'create','Invoice','') %>Invoice</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][create][]', 'Currency_0'%>
+    	<h4><%= check_box_tag 'permissions[1][create][]', 'Currency_1', check_permission(permissions,1,'create','Currency','') %>Currency</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][create][]', 'Group_0'%>
+    	<h4><%= check_box_tag 'permissions[1][create][]', 'Group_1', check_permission(permissions,1,'create','Currency','') %>Group</h4>			        
+    </div>				     
+  </div>
+</fieldset>
+<fieldset class="permission-block" style="padding-left:10px">
+	<legend><h4>Update Permissions</h4></legend>
+	<div>
+		<div class="float-left" style="width:10%">
+			<%= hidden_field_tag 'permissions[1][update][]', 'User_0'%>
+    	<h4><%= check_box_tag 'permissions[1][update][]', 'User_1', check_permission(permissions,1,'update','User','') %>User</h4>			        
+    </div>						    
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][update][]', 'Invoice_0'%>
+    	<h4><%= check_box_tag 'permissions[1][update][]', 'Invoice_1', check_permission(permissions,1,'update','Invoice','') %>Invoice</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][update][]', 'Currency_0'%>
+    	<h4><%= check_box_tag 'permissions[1][update][]', 'Currency_1', check_permission(permissions,1,'update','Currency','') %>Currency</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][update][]', 'Group_0'%>
+    	<h4><%= check_box_tag 'permissions[1][update][]', 'Group_1', check_permission(permissions,1,'update','Group','') %>Group</h4>			        
+    </div>				     
+  </div>
+</fieldset>
+<fieldset class="permission-block" style="padding-left:10px">
+	<legend><h4>Delete Permissions</h4></legend>
+	<div>
+		<div class="float-left" style="width:10%">
+			<%= hidden_field_tag 'permissions[1][delete][]', 'User_0'%>
+    	<h4><%= check_box_tag 'permissions[1][delete][]', 'User_1', check_permission(permissions,1,'delete','User','') %>User</h4>			        
+    </div>						    
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][delete][]', 'Invoice_0'%>
+    	<h4><%= check_box_tag 'permissions[1][delete][]', 'Invoice_1', check_permission(permissions,1,'delete','Invoice','') %>Invoice</h4>			        
+    </div>
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][delete][]', 'Currency_0'%>
+    	<h4><%= check_box_tag 'permissions[1][delete][]', 'Currency_1', check_permission(permissions,1,'delete','Currency','') %>Currency</h4>			        
+    </div>	
+    <div class="float-left" style="width:10%">
+    	<%= hidden_field_tag 'permissions[1][delete][]', 'Group_0'%>
+    	<h4><%= check_box_tag 'permissions[1][delete][]', 'Group_1', check_permission(permissions,1,'delete','Group','') %>Group</h4>			        
+    </div>				     
+  </div>
+</fieldset>
+<div style="clear:both"></div>

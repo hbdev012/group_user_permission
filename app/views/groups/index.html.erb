@@ -1,0 +1,41 @@
+<div class="block" id=" block-tables">
+	<%=render :partial => "/shared/group_menu", :locals=>{:active_tab => "index"}%>
+	<div class="content">
+	  <h2 class="title">Groups</h2>
+	  <div class="inner">
+	    <form action="#" class="form">
+	      <table class="table">
+	        <tbody>
+	        	<tr>
+		          <th class="first"><input  id="check_all" type="checkbox" class="checkbox toggle"></th>
+		          <th>ID</th>
+		          <th>Name</th>
+		          <th>Users Count</th>	          
+		          <th class="last">&nbsp;</th>
+		        </tr>
+		        <% @groups.each do |group| %>
+			        <tr class="<%= cycle("even", "odd") %>">
+			          <td><input type="checkbox" class="checkbox" name="id" value="<%= group.id %>"></td>
+			          <td><%= group.id %></td>
+			          <td><%= group.name %></td>
+			          <td><%= group.users.count %></td>
+			          <td class="last"><%= link_to "Edit" , edit_group_path(group) %> | <%= link_to "Delete" , group_path(group) %></td>
+			        </tr>
+		        <% end %>	        
+		      </tbody>
+	    	</table>
+	      <!-- <div class="actions-bar wat-cf">
+	        <div class="actions">
+	          <button class="button" type="submit">
+	          	<%#= image_tag("cross.png",:alt=>"Delete") %>
+	            Delete
+	          </button>
+	        </div>
+	        <div class="pagination">
+	          <span class="disabled prev_page">« Previous</span><span class="current">1</span><a rel="next" href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a rel="next" class="next_page" href="#">Next »</a>
+	        </div>
+	      </div> -->
+	    </form>
+	  </div>
+	</div>
+</div>

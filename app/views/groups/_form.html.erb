@@ -1,0 +1,21 @@
+<div class="group wat-cf">
+  <div class="left">
+  	<%= f.label :name ,:class=>"label right"%>      
+  </div>
+  <div class="right">      
+    <%= f.text_field :name, :autofocus => true ,:class=>"text_field",:style=>"width:auto;"%>
+  </div>
+</div>
+<% if @group.new_record? %>
+	<%= f.hidden_field :created_by ,:value=>@user.present? ? @user.id : nil %>				  
+<% end %>
+<%= f.hidden_field :updated_by ,:value=>@user.present? ? @user.id : nil %>
+<div class="group navform wat-cf">
+  <div class="right">
+    <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%=image_tag("tick.png")%> <%= f.object.new_record? ? 'Create' : 'Save' %>
+    </button> 
+  </div>   	  
+  </div>
+</div>   

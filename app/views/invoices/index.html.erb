@@ -1,0 +1,50 @@
+<div class="block" id=" block-tables">
+	<%=render :partial => "/shared/invoice_menu", :locals=>{:active_tab => "invoices"}%>
+	<div class="content">
+	  <h2 class="title">Tables</h2>
+	  <div class="inner">
+	    <form action="#" class="form">
+	      <table class="table">
+	        <tbody><tr>
+	          <th class="first"><input id="check_all" type="checkbox" class="checkbox toggle"></th>
+	          <th>Invoice No.</th>
+	          <th>Invoice Date Request</th>
+	          <th>Client</th>
+	          <th>Request Currency</th>
+	          <th>Request Currency Rate</th>
+	          <th>Request Payment Amt</th>
+	          <th>Revieved Amt</th>
+	          <th>Revieved Amt(USD)</th>
+	          <th class="text-center last">Actions</th>
+	        </tr>
+	        <%@invoices.each do |invoice|%>
+	        	<tr class="<%=cycle("odd","even")%>">
+		          <td><input type="checkbox" class="checkbox" name="id" value="<%=invoice.id%>"></td>
+		          <td><%=invoice.invoice_no%></td>
+		          <td><%=invoice.invoice_date_request%></td>
+		          <td><%=invoice.client_name%></td>
+		          <td><%=invoice.request_currency%></td>
+		          <td><%=invoice.request_currency_rate%></td>
+		          <td><%=invoice.request_payment_amount%></td>
+		          <td><%=invoice.received_amount%></td>
+		          <td><%=invoice.received_amount_usd%></td>
+		          <td class="last text-center">
+		          	<a href="/invoices/<%=invoice.id%>/edit">edit</a> | 
+		          	<%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		        </tr>	
+	        <%end%>
+	      </tbody></table>
+	      <div class="actions-bar wat-cf">
+	        <div class="actions">
+	          <button class="button" type="submit">
+	          	<%= image_tag("cross.png",:alt=>"Delete") %>
+	            Delete
+	          </button>
+	        </div>
+	        <%= will_paginate @invoices %>
+	        
+	      </div>
+	    </form>
+	  </div>
+	</div>
+</div>

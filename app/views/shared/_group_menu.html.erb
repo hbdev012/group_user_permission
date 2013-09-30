@@ -1,0 +1,20 @@
+<% @user ||= current_user %>
+<div class="secondary-navigation">
+	<ul class="wat-cf">		
+		<% if allowed_to?(@user,:read, Group) %>
+	  <li class="first <%= (active_tab == "index") ? "active" : ""%>">	  	
+	  	<%= link_to "List",groups_path %>
+	  </li>	  
+	  <% end %>
+	  <% if allowed_to?(@user,:create, Group) %>
+		  <li class="<%= (active_tab == "new") ? "active" : ""%>">
+		  	<%= link_to "Add Group",new_group_path %>
+		  </li>	  
+	  <% end %>
+	  <% if allowed_to?(@user,:manage, :all) %>
+		  <li class="<%= (active_tab == "permissions") ? "active" : ""%>">
+		  	<%= link_to "Group Permissions","/groups/permissions" %>	  	
+		  </li>
+	  <% end %>	  
+	</ul>
+</div>

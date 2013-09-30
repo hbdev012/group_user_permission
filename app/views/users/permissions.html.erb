@@ -1,0 +1,25 @@
+<%=render :partial => "/shared/group_menu", :locals=>{:active_tab => "permissions"}%>
+<div class="block">
+    <div class="content">
+      <div class="inner">
+				<h1>User Permissions</h1>
+				<%= form_tag('/permissions/bulk_create') do -%>
+					<div class="group" style="margin-bottom:10px;">
+						<div class="group string required">
+							<label class="string required label" for="role_group_name"><abbr title="required">*</abbr> User&nbsp;</label>
+							<%=select_tag "permissions[resource_id]",options_for_select(['']+@users.map{|x| [x.name,x.id]}) ,:onchange=>"callAjax(this,'/permissions/get_permissions','GET','User')" %>
+							<%= hidden_field_tag "permissions[resource_type]","User" %>
+						</div>
+					</div>
+					<div id="permissions_div">
+						<%#= render :partial => "permissions/permissions" %>
+					</div>
+				  <div class="group navform wat-cf">
+				    <button class="button" type="submit">
+				      <%=image_tag("tick.png")%> Save
+				    </button> 
+					</div> 
+				<% end -%>			
+			</div>
+		</div>
+</div>

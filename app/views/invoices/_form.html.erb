@@ -1,0 +1,40 @@
+  <% @invoice.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+
+  <div class="group">
+    <%= f.label :date_of_payment_receipt %><br />
+    <%= f.text_field :date_of_payment_receipt, :autofocus => true %>
+  </div>
+  <div class="group">
+    <%= f.label :client_name %><br />
+    <%= f.text_field :client_name%>
+  </div>
+
+  
+
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%=image_tag("tick.png")%> Save
+    </button>
+  </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#invoice_date_of_payment_receipt').datepicker({
+      showOn: "button",
+      buttonImage: "/assets/calendar.gif",
+      buttonImageOnly: true,
+      beforeShow: function(input, inst) {
+        var widget = $(inst).datepicker('widget');
+        widget.css('margin-left', '250px').css('margin-top', '-5px');
+        $(".ui-datepicker").css('width','13em');
+       
+    }
+    });
+    $('#invoice_invoice_no').datepicker();
+  });
+</script>
+<style type="text/css">
+ .ui-datepicker-trigger{margin-left:5px !important;}
+ </style>

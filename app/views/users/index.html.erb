@@ -1,0 +1,52 @@
+<div class="block" id=" block-tables">
+	<%=render :partial => "/shared/user_menu", :locals=>{:active_tab => "users"}%>
+	<div class="content">
+	  <h2 class="title">Tables</h2>
+	  <div class="inner">
+	    <form action="#" class="form">
+	      <table class="table">
+	        <tbody><tr>
+	          <th class="first"><input id="check_all" type="checkbox" class="checkbox toggle"></th>
+	          <th>ID</th>
+	          <th>First Name</th>
+	          <th>Last Name</th>
+	          <th>Email</th>
+	          <th>Group Role</th>
+	          <th class="text-center last">Actions</th>
+	        </tr>
+	        <%@users.each do |user|%>
+	        	<tr class="<%=cycle("odd","even")%>">
+		          <td><input type="checkbox" class="checkbox" name="id" value="<%=user.id%>"></td>
+		          <td><%=user.id%></td>
+		          <td><%=user.first_name%></td>
+		          <td><%=user.last_name%></td>
+		          <td><%=user.email%></td>
+		          <td><%=user.group.name if user.group.present?%></td>
+		          <td class="last text-center">
+		          	<a href="/users/<%=user.id%>/edit">edit</a> | 
+		          	<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		        </tr>	
+	        <%end%>
+	      </tbody></table>
+	      <div class="actions-bar wat-cf">
+	        <div class="actions">
+	          <!-- <button class="button updatevals" type="submit" id="Active">
+	          	<%#= image_tag("active.png",:alt=>"Delete") %>
+	            Active
+	          </button>
+	          <button class="button updatevals" type="submit" id="InActive">
+	          	<%#= image_tag("inactive.png",:alt=>"Delete") %>
+	            Inactive
+	          </button>
+ -->	          <button class="button updatevals" type="submit" id="delete">
+	          	<%= image_tag("cross.png",:alt=>"Delete") %>
+	            Delete
+	          </button>
+	        </div>
+	        <%= will_paginate @users %>
+	        
+	      </div>
+	    </form>
+	  </div>
+	</div>
+</div>

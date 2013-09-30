@@ -1,0 +1,14 @@
+<% @user ||= current_user %>
+<div class="secondary-navigation">
+	<ul class="wat-cf">
+		<% if allowed_to?(@user,:read, User) %>
+	  	<li class="first <%= (active_tab == "users") ? "active" : ""%>"><a href="/users">List</a></li>
+	  <% end %>
+	  <% if allowed_to?(@user,:create, User) %>
+	  	<li class="<%= (active_tab == "registration") ? "active" : ""%> "><a href="/users/new">Register User</a></li>	  
+	  <% end %>
+	  <% if allowed_to?(@user,:manage, :all) %>
+	  	<li class="<%= (active_tab == "permission") ? "active" : ""%>"><a href="/users/permissions">User Permissions</a></li>
+	  <% end %>	  
+	</ul>
+</div>

@@ -1,0 +1,12 @@
+<%=render :partial => "/shared/group_menu", :locals=>{:active_tab => "new"}%>
+  <div class="block">
+    <div class="content">
+      <div class="inner">
+        <h2>Add Group</h2>
+        <%= form_for(@group,:html=>{:class=>"form"}) do |f| %>        
+        	<%= render :partial => "form", :locals => { :f => f } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<div style="clear:both"></div>

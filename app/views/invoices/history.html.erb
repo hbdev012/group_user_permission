@@ -1,0 +1,27 @@
+<div class="block" id=" block-tables">
+	<%=render :partial => "/shared/invoice_menu", :locals=>{:active_tab => "histories"}%>
+	<div class="content">
+	  <h2 class="title">Tables</h2>
+	  <div class="inner">
+	    <form action="#" class="form">
+	      <table class="table">
+	        <tbody><tr>
+	          <th>History</th>
+	        </tr>
+	        <%@histories.each do |invoice|%>
+	        	<tr class="<%=cycle("odd","even")%>">
+		          <td><%=invoice.item_type%> 
+		          	 <strong>( <%=link_to invoice.invoice_no, edit_invoice_url(invoice.item_id)%> )</strong> has been 
+		          	<strong><%= invoice.event == "destroy" ? "#{invoice.event}ed" : "#{invoice.event}d"%></strong> by <strong><%=invoice.user_name%></strong> <span style="float:right"> on  <strong><%=invoice.created_at.strftime("%x , %H:%M %p")%></strong></span>
+		          	<%#=invoice.object.inspect if invoice.object.present?%>
+		          </td>
+		        </tr>	
+	        <%end%>
+	      </tbody></table>
+	      <div class="actions-bar wat-cf">
+	        <%= will_paginate @histories %>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+</div>

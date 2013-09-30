@@ -1,0 +1,41 @@
+<div class="block" id=" block-tables">
+	<%=render :partial => "/shared/user_menu", :locals=>{:active_tab => "permission"}%>
+	<div class="content">
+	  <h2 class="title">Tables</h2>
+	  <div class="inner">
+	    <form action="#" class="form">
+	      <table class="table">
+	        <tbody><tr>
+	          <th class="first"><input  id="check_all" type="checkbox" class="checkbox toggle"></th>
+	          <th>ID</th>
+	          <th>Name</th>
+	          <th class="last">&nbsp;</th>
+	        </tr>
+	        <%@permissions.each do |permission|%>
+	        	<tr class="<%=cycle("odd","even")%>">
+		          <td><input type="checkbox" class="checkbox" name="id" value="<%=permission.id%>"></td>
+		          <td><%=permission.id%></td>
+		          <td><%=permission.name%></td>
+		          <td class="last"><a href="/permissions/<%=permission.id%>">show</a> | <a href="/permissions/<%=permission.id%>/edit">edit</a> | <a href="/permissions/<%=permission.id%>" method="DELETE">destroy</a></td>
+		        </tr>	
+	        <%end%>
+	      </tbody></table>
+	      <div class="actions-bar wat-cf">
+	        <div class="actions">
+	          <button class="button" type="submit">
+	          	<%= image_tag("cross.png",:alt=>"Delete") %>
+	            Delete
+	          </button>
+	          <a class="button" href="/users/permissions/new">
+	          	<%= image_tag("tick.png",:alt=>"Delete") %>
+	            New Permission
+	          </a>
+	        </div>
+	        <div class="pagination">
+	          <span class="disabled prev_page">« Previous</span><span class="current">1</span><a rel="next" href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a rel="next" class="next_page" href="#">Next »</a>
+	        </div>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+</div>

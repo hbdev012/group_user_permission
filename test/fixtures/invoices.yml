@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  invoice_date_request: 2013-09-17 11:29:50
+  date_of_payment_receipt: 2013-09-17 11:29:50
+  invoice_no: MyString
+  client_name: MyString
+  request_currency: MyString
+  request_currency_rate: 1.5
+  request_payment_amount: 1.5
+  request_payment_amount_usd: 1.5
+  received_amount_currency: 1.5
+  received_currency_rate: 1.5
+  received_amount: 1.5
+  received_amount_usd: 1.5
+  transaction_cost: 1.5
+  bank: MyString
+  mode_of_payment: MyString
+  client_status: MyString
+  work_status: MyString
+  payment_type: MyString
+  project_code: MyString
+  created_by: 1
+  udpated_by: 1
+
+two:
+  invoice_date_request: 2013-09-17 11:29:50
+  date_of_payment_receipt: 2013-09-17 11:29:50
+  invoice_no: MyString
+  client_name: MyString
+  request_currency: MyString
+  request_currency_rate: 1.5
+  request_payment_amount: 1.5
+  request_payment_amount_usd: 1.5
+  received_amount_currency: 1.5
+  received_currency_rate: 1.5
+  received_amount: 1.5
+  received_amount_usd: 1.5
+  transaction_cost: 1.5
+  bank: MyString
+  mode_of_payment: MyString
+  client_status: MyString
+  work_status: MyString
+  payment_type: MyString
+  project_code: MyString
+  created_by: 1
+  udpated_by: 1
